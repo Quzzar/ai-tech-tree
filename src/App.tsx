@@ -1,16 +1,16 @@
-import { GraphCanvas } from "reagraph";
-import { useRecoilState } from "recoil";
-import { techTreeState, yearState } from "./atoms/techAtom";
-import { useEffect, useState } from "react";
-import { getGraphEdges, getGraphNodes } from "./tech-tree/graph-utils";
+import { GraphCanvas } from 'reagraph';
+import { useRecoilState } from 'recoil';
+import { techTreeState, yearState } from './atoms/techAtom';
+import { useState } from 'react';
+import { getGraphEdges, getGraphNodes } from './tech-tree/graph-utils';
 import {
   generateNextTechOptions,
   getRecentTech,
   removeDuplicateTech,
-} from "./tech-tree/generation";
-import { Box, Text, Stack, Button } from "@mantine/core";
-import TechSelect from "./tech-tree/TechSelect";
-import { techSelectModalOpenState } from "./atoms/navAtom";
+} from './tech-tree/generation';
+import { Box, Stack, Button } from '@mantine/core';
+import TechSelect from './tech-tree/TechSelect';
+import { techSelectModalOpenState } from './atoms/navAtom';
 
 function App() {
   const [techTree, setTechTree] = useRecoilState(techTreeState);
@@ -27,8 +27,8 @@ function App() {
     <Stack>
       <Box h={'80vh'}>
         <GraphCanvas
-          layoutType="treeLr2d"
-          edgeInterpolation="curved"
+          layoutType='treeLr2d'
+          edgeInterpolation='curved'
           nodes={getGraphNodes(techTree)}
           edges={getGraphEdges(techTree)}
         />
@@ -38,22 +38,22 @@ function App() {
         loading={loading}
         onClick={async () => {
           setLoading(true);
-          const options = await generateNextTechOptions(
-            getRecentTech(techTree, 50),
-            year
-          );
+          const options = await generateNextTechOptions(getRecentTech(techTree, 50), year);
           setTechOptions(options);
           setOpened(true);
           setLoading(false);
         }}
-        sx={{ position: "absolute", bottom: 0, left: 0 }}
+        sx={{ position: 'absolute', bottom: 0, left: 0 }}
       >
         Research New Tech
       </Button>
-      <TechSelect options={techOptions} onSelected={(option) => {
-        setTechTree(removeDuplicateTech([...techTree, option]));
-        setYear(option.year);
-      }} />
+      <TechSelect
+        options={techOptions}
+        onSelected={(option) => {
+          setTechTree(removeDuplicateTech([...techTree, option]));
+          setYear(option.year);
+        }}
+      />
     </Stack>
   );
 }
