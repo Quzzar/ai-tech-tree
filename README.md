@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Welcome to AI Tech Tree, an innovative project inspired by 4X strategy games like Civilization V. This TypeScript-based project explores the concept of a never-ending technology tree, dynamically generated using generative AI. Unlike traditional tech trees that have a finite end, AI Tech Tree offers a unique, ever-expanding universe of technological advancements tailored to your civilization's characteristics and choices.
+This is a simple site I made that's inspired by 4X strategy games like Civilization V. The idea is what if you could use generative AI to create a never-ending technology tree, one that's dynamically generated. Unlike traditional tech trees that have a finite end, AI Tech Tree offers a unique, ever-expanding universe of technological advancements tailored to your civilization's characteristics and choices.
 
 ## Concept
 
